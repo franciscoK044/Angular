@@ -1,0 +1,108 @@
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Precio</th>
+      <th>Stock</th>
+      <th>Imagen</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (membresia of membresias; track membresia.id) {
+      <tr>
+        <td>{{ membresia.id }}</td>
+        <td>{{ membresia.nombre }}</td>
+        <td>{{ membresia.descripcion }}</td>
+        <td>{{ membresia.precio | currency }}</td>
+        @if (membresia.stock > 0) {
+          <td>{{ membresia.stock }}</td>
+        } @else {
+          <td>SIN STOCK</td>
+        }
+        <td><img class="img-thumbnail" [src]="membresia.imagenUrl" alt="{{ membresia.nombre }}" width="100"></td>
+        <td><app-input-integer [(cantidad)]="membresia.cantidad" [max]="membresia.stock" (cantidadChange)="onCantidadChange($event,membresia)"></app-input-integer></td>
+        </tr>
+    } @empty {
+      <tr>
+        <td colspan="6">No hay membresías disponibles</td>
+      </tr>
+    }
+    @for (clase of clases; track clase.id) {
+      <tr>
+        <td>{{ clase.id }}</td>
+        <td>{{ clase.nombre }}</td>
+        <td>{{ clase.descripcion }}</td>
+        <td>{{ clase.precio | currency }}</td>
+        @if (clase.stock > 0) {
+          <td>{{ clase.stock }}</td>
+        } @else {
+          <td>SIN STOCK</td>
+        }
+        <td><app-input-integer [(cantidad)]="clase.cantidad" [max]="clase.stock" (cantidadChange)="onCantidadChange($event,clase)"></app-input-integer></td>
+      </tr>
+    } @empty {
+      <tr>
+        <td colspan="6">No hay clases disponibles</td>
+      </tr>
+    }
+    @for (producto of productos; track producto.id) {
+      <tr>
+        <td>{{ producto.id }}</td>
+        <td>{{ producto.nombre }}</td>
+        <td>{{ producto.descripcion }}</td>
+        <td>{{ producto.precio | currency }}</td>
+        @if (producto.stock > 0) {
+          <td>{{ producto.stock }}</td>
+        } @else {
+          <td>SIN STOCK</td>
+        }
+        <td><img class="img-thumbnail" [src]="producto.imagenUrl" alt="{{ producto.nombre }}" width="100"></td>
+        <td><app-input-integer [(cantidad)]="producto.cantidad" [max]="producto.stock" (cantidadChange)="onCantidadChange($event,producto)"></app-input-integer></td>
+      </tr>
+    } @empty {
+      <tr>
+        <td colspan="6">No hay productos disponibles</td>
+      </tr>
+    }
+    @for (servicio of servicios; track servicio.id) {
+      <tr>
+        <td>{{ servicio.id }}</td>
+        <td>{{ servicio.nombre }}</td>
+        <td>{{ servicio.descripcion }}</td>
+        <td>{{ servicio.precio | currency }}</td>
+        @if (servicio.stock > 0) {
+          <td>{{ servicio.stock }}</td>
+        } @else {
+          <td>SIN STOCK</td>
+        }
+        <td><app-input-integer [(cantidad)]="servicio.cantidad" [max]="servicio.stock" (cantidadChange)="onCantidadChange($event,servicio)"></app-input-integer></td>
+      </tr>
+    } @empty {
+      <tr>
+        <td colspan="6">No hay servicios disponibles</td>
+      </tr>
+    }
+    @for (accesorio of accesorios; track accesorio.id) {
+      <tr>
+        <td>{{ accesorio.id }}</td>
+        <td>{{ accesorio.nombre }}</td>
+        <td>{{ accesorio.descripcion }}</td>
+        <td>{{ accesorio.precio | currency }}</td>
+        @if (accesorio.stock > 0) {
+          <td>{{ accesorio.stock }}</td>
+        } @else {
+          <td>SIN STOCK</td>
+        }
+        <td>
+          <td><app-input-integer [(cantidad)]="accesorio.cantidad" [max]="accesorio.stock" (cantidadChange)="onCantidadChange($event,accesorio)"></app-input-integer></td>
+      </tr>
+    } @empty {
+      <tr>
+        <td colspan="6">No hay accesorios disponibles</td>
+      </tr>
+    }
+  </tbody>
+</table>
