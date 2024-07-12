@@ -6,8 +6,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./input-integer.component.scss']
 })
 export class InputIntegerComponent {
-  @Input() cantidad: number;
-  @Input() max: number;
+  @Input() cantidad: number = 0;
+  @Input() max: number = 100;
   @Output() cantidadChange: EventEmitter<number> = new EventEmitter<number>();
 
   sumarCantidad() {
@@ -25,7 +25,10 @@ export class InputIntegerComponent {
   }
 
   cambiarCantidad(evento: any) {
-    const valorIngresado = evento.target.value;
+    let valorIngresado = parseInt(evento.target.value, 10);
+    if (isNaN(valorIngresado)) {
+      valorIngresado = 0;
+    }
     if (valorIngresado > this.max) {
       this.cantidad = this.max;
     } else if (valorIngresado < 0) {

@@ -1,11 +1,11 @@
 export interface GymProduct {
-    id: number;
-    nombre: string;
-    descripcion: string;
-    precio: string;
-    stock: number;
-    imagenUrl: string;
-    clearance: boolean;
-    cantidad: number;
-  }
-  
+  id: number;
+  nombre_producto: string;
+  descripcion: string;
+  precio: number;  
+  stock: number;
+  img: string;
+  clearance: boolean;
+  cantidad: number;
+  tipo_producto: 'membresia' | 'clase' | 'producto' | 'servicio' | 'accesorio';
+}
